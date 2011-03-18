@@ -2,7 +2,7 @@
 
 print = (data) -> console.log data.toString().trim()
 
-task 'build', 'Compile riak-js Coffeescript source to Javascript', ->
+task 'build', 'Compile coffeescript source to Javascript', ->
   exec 'mkdir -p lib && coffee -c -o lib src'
   
 task 'dev', 'Continuous compilation', ->

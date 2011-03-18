@@ -1,15 +1,13 @@
-u          = require 'util'
 
-web_client = require './web_client'
-Handshaker = require('./handshaker').Handshaker
+# Need to pass username, password and server as args
 
-[username, password] = ['whatupdave', 'r1mmer']
+SocketClient = require('./socket_client').SocketClient
+MessageHandler = require('./message_handler').MessageHandler
 
-handshaker = new Handshaker()
+[a, b, username, password, server] = process.argv
 
-web_client.get_session_id username, password, (session_id) ->
-  u.log("Retrieved session id: #{session_id}")
-  
-  handshaker.handshake username, (server_hash) ->
-    web_client.join_server username, session_id, server_hash, ->
-      handshaker.sendLoginRequest()
+socket_client = new SocketClient(new MessageHandler())
+
+
+socket_client.connect username, password, server
+

@@ -33,5 +33,5 @@ exports.join_server = (username, session_id, server_hash, callback) ->
       callback()
     
   request.end()
-  log "Requesting join server. #{request.path}"
+  log "authenticating server"
     
